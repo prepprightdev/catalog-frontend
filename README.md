@@ -44,3 +44,38 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
+
+
+<!-- Folder Structure -->
+<!-- Resources -->
+https://www.robinwieruch.de/react-folder-structure/
+
+
+src/
+  assets/         # Images, global styles, fonts
+  components/     # Reusable UI components
+  features/       # Domain folders (auth, user, courses, admin, etc.)
+    auth/         # Authentication (login, register, context, slices)
+    user/         # User profile, dashboard
+    admin/        # Admin-specific modules
+    course/       # Course listings, details
+    support/      # Support portal features
+    instructor/   # Instructor-specific features
+    student/      # Student-specific features
+  hooks/          # Reusable custom hooks
+  pages/          # Route-level pages
+  routes/         # Public/Private/Role-based routing logic
+  providers/      # Context providers, such as ThemeProvider or AuthProvider
+  store/          # Redux Toolkit setup: slices, middleware, store config
+  services/       # API modules, authentication service
+  utils/          # Helper functions/utilities
+  types/          # Shared TypeScript interfaces/types
+  layouts/        # Common layouts (Header, Footer, Sidebar)
+  middleware/     # (Optional) route guards, error boundaries
+  config/         # Global config/constants
+  App.tsx         # Main application component
+  main.tsx        # ReactDOM.render entry point

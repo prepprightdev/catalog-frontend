@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { Play, Users, Star, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import type { RootState } from "../store";
-import colors from "../theme/colors";
+import type { RootState } from "../../store";
+import colors from "../../theme/colors";
 
 const HeroSection: React.FC = memo(() => {
   const navigate = useNavigate();

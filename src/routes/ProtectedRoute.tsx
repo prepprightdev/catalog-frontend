@@ -27,8 +27,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     user?.role &&
     !allowedRoles.includes(user.role)
   ) {
-    // Redirect user without required role to home or not authorized page
-    return <Navigate to="/" replace />;
+    // Redirect users lacking permission to /unauthorized page
+    return <Navigate to="/unauthorized" replace />;
   }
 
   // Authorized, show the protected page/component

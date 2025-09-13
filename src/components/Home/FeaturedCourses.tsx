@@ -1,30 +1,27 @@
 import React, { useEffect, memo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Clock, Users, Star, ChevronRight } from "lucide-react";
-import { fetchFeaturedCourses } from "../../features/course/courseSlice";
-import CourseCard from "../../features/course/CourseCard"; // adjust path if needed
+import { ChevronRight } from "lucide-react";
+import { fetchCourses } from "../../features/course/courseSlice";
+import CourseCard from "../../features/course/CourseCard";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { RootState } from "../../store";
-import type { Course } from "../../types/Course";
 
 const FeaturedCourses: React.FC = memo(() => {
   const dispatch = useAppDispatch();
-  const { courses, isLoading } = useAppSelector(
-    (state: RootState) => state.courses
-  );
+  const { courses, isLoading } = useAppSelector((state: RootState) => state.courses);
 
   useEffect(() => {
-    dispatch(fetchFeaturedCourses());
-  }, [dispatch]);
+    if (courses.length === 0) {
+      dispatch(fetchCourses());
+    }
+  }, [dispatch, courses.length]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -39,7 +36,7 @@ const FeaturedCourses: React.FC = memo(() => {
 
   if (isLoading) {
     return (
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-grayLight">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="h-8 bg-gray-200 rounded-lg w-64 mx-auto mb-4 animate-pulse"></div>
@@ -66,7 +63,7 @@ const FeaturedCourses: React.FC = memo(() => {
   }
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-grayLight">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -75,7 +72,7 @@ const FeaturedCourses: React.FC = memo(() => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-grayDark mb-6">
             Launch a new career in{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow font-extrabold">
               3 months
@@ -110,7 +107,7 @@ const FeaturedCourses: React.FC = memo(() => {
         >
           <Link
             to="/courses"
-            className="inline-flex items-center space-x-2 px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-teal-500/50"
+            className="inline-flex items-center space-x-2 px-8 py-4 bg-primary hover:bg-primaryDark text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-primary/50"
           >
             <span>View All Courses</span>
             <ChevronRight className="w-5 h-5" />
@@ -122,5 +119,4 @@ const FeaturedCourses: React.FC = memo(() => {
 });
 
 FeaturedCourses.displayName = "FeaturedCourses";
-
 export default FeaturedCourses;

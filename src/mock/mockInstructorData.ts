@@ -1,16 +1,7 @@
 // src/mock/mockInstructorData.ts
-export interface MockInstructor {
-  id: string;
-  name: string;
-  avatar: string;
-  title: string;
-  rating: number;
-  studentsCount: number;
-  coursesCount: number;
-  bio?: string;
-}
+import { Instructor } from "../types/types";
 
-export const mockInstructors: MockInstructor[] = [
+export const mockInstructors: Instructor[] = [
   {
     id: "1",
     name: "Sarah Johnson",

@@ -1,6 +1,5 @@
 // src/mock/mockCoursesData.ts
-import type { Course } from "../types/Course";
-
+import { Course } from "../types/types";
 export const mockCoursesData: Course[] = [
   {
     id: "1",

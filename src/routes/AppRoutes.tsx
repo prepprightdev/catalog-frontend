@@ -9,6 +9,7 @@ import LoginForm from "../features/auth/LoginForm";
 import Unauthorized from "../pages/Unauthorized";
 import NotFound from "../pages/NotFound";
 import QuizPage from "../pages/QuizPage";
+import Coursepage from "../pages/Coursepage";
 
 function AppRoutes() {
   return (
@@ -27,15 +28,23 @@ function AppRoutes() {
         }
       />
 
+      <Route
+        path="/quiz"
+        element={
+          <ProtectedRoute allowedRoles={["student"]}>
+            <QuizPage />
+          </ProtectedRoute>
+        }
+      />
 
-      <Route 
-  path="/quiz" 
-  element={
-    <ProtectedRoute allowedRoles={["student"]}>
-      <QuizPage />
-    </ProtectedRoute>
-  } 
-/>
+      <Route
+        path="/courses"
+        element={
+          <ProtectedRoute allowedRoles={["student"]}>
+            <Coursepage />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Unauthorized Route */}
       <Route path="/unauthorized" element={<Unauthorized />} />

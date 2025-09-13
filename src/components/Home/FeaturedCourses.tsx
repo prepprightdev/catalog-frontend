@@ -10,7 +10,9 @@ import type { Course } from "../../types/Course";
 
 const FeaturedCourses: React.FC = memo(() => {
   const dispatch = useAppDispatch();
-  const { courses, isLoading } = useAppSelector((state:RootState) => state.courses);
+  const { courses, isLoading } = useAppSelector(
+    (state: RootState) => state.courses
+  );
 
   useEffect(() => {
     dispatch(fetchFeaturedCourses());
@@ -45,7 +47,10 @@ const FeaturedCourses: React.FC = memo(() => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 animate-pulse">
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 animate-pulse"
+              >
                 <div className="w-full h-48 bg-gray-200 rounded-xl mb-4"></div>
                 <div className="space-y-3">
                   <div className="h-4 bg-gray-200 rounded w-3/4"></div>
@@ -73,12 +78,12 @@ const FeaturedCourses: React.FC = memo(() => {
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Launch a new career in{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow font-extrabold">
-  3 months
-</span>
-
+              3 months
+            </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Take a structured approach to learning with our most popular courses. Start building valuable skills today.
+            Take a structured approach to learning with our most popular
+            courses. Start building valuable skills today.
           </p>
         </motion.div>
 
